@@ -66,6 +66,7 @@ Best: -0.001759 using {'reg_lambda': 0.001, 'neurons': 16, 'hidden_layers': 4, '
 ![alt text](https://github.com/NichaA/EstimateCosineFunction/raw/master/image/A2-1_trainval.png)
 - Test MSE = 0.00027, Test RMSE = 0.01654
 - Bland-Altman plot shows 
-            - mean +/- SD = -0.00033 +/- 0.01654
-            - 97.5% of the residuals are between -0.03274 and 0.03208 
+      - mean +/- SD = -0.00033 +/- 0.01654
+      - 97.5% of the residuals are between -0.03274 and 0.03208 
+            
 ![alt text](https://github.com/NichaA/EstimateCosineFunction/raw/master/image/A2-1_blandaltman.png)
