@@ -57,8 +57,8 @@ Best: -0.001759 using {'reg_lambda': 0.001, 'neurons': 16, 'hidden_layers': 4, '
      - The extreme ends of theta (at -180, and 180 degrees) has improved compared to the fixed architecture
      - The distribution of the residuals is narrower here.
      - Insights from radomized search results: 
-            - Deeper architecture (more hidden layers) can produce results with more complex nonlinearity toward the ends (theta= +/- 180) of the cosine function better. 
-            - Larger batch size can help reduce overfitting as there are more noisy y_train data within similar X_train regions
+            1) Deeper architecture (more hidden layers) can produce results with more complex nonlinearity toward the ends (theta= +/- 180) of the cosine function better. 
+            2) Larger batch size can help reduce overfitting as there are more noisy y_train data within similar X_train regions
 ![alt text](https://github.com/NichaA/EstimateCosineFunction/raw/master/image/A1-2_blandaltman.png)
 
 ### 2) Assume that X is a time-series variable and a sequence of X's is available at inference time 
