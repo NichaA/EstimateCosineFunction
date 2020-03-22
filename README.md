@@ -23,7 +23,7 @@ options:
 - calculate test MSE adn RMSE
 - observe any residual trends with the Bland-Altman plot
 
-## Two main aprroaches:
+## Two main approaches:
 
 ### 1) Assume that only 1 'X' is available at inference time
 
