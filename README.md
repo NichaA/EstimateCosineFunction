@@ -4,14 +4,19 @@ Estimate Cosine Function with Neural Network
 y = cos(X) where X>=-180 and X<=180 degree
 
 ## Dataset:
-Training -  X_train contains randomized values with repeated selections within [-180,180] 
-            y_train contains cos(X_train) + random noise within +/- 10% of cos(X_train)            
+Training
+- X_train contains randomized values with repeated selections within [-180,180] 
+- y_train contains cos(X_train) + random noise within +/- 10% of cos(X_train) 
+- inspect training data and make sure that it's within the 0.9 to 1.1 envelopes
+![alt text](https://github.com/NichaA/EstimateCosineFunction/raw/master/image/trainingdata.png)
+
+Test
+- X_test contains values within the range of [-180,180] 
+- y_test contains cos(X_test)
             
-Test -      X_test contains values within the range of [-180,180] 
-            y_test contains cos(X_test)
-            
-options:    N - number of available data points in the training set (default = 10000)
-            theta_resolution - resolution of X (i.e. theta) (default = 0.01)
+options:    
+- N - number of available data points in the training set (default = 10000)
+- theta_resolution - resolution of X (i.e. theta) (default = 0.01)
 
 ## Model Evaluation: 
 - observe training/validation curves
@@ -28,9 +33,10 @@ options:    N - number of available data points in the training set (default = 1
 - Train-val curves
 ![alt text](https://github.com/NichaA/EstimateCosineFunction/raw/master/image/A1-1_trainval.png)
 - Test MSE = 0.000018, Test RMSE = 0.01342
-- Bland-Altman plot shows mean +/- SD = 0.00695 +/- 0.01148, 
-    97.5% of the residuals are between -0.01556 and 0.02945, 
-    the  model didn't perform well on the two edges (we will see if RandomizedSearchCV can optmize this)
+- Bland-Altman plot shows
+    - mean +/- SD = 0.00695 +/- 0.01148 
+    - 97.5% of the residuals are between -0.01556 and 0.02945 
+    - The  model didn't perform well on the two edges (we will see if RandomizedSearchCV can improve this)
 ![alt text](https://github.com/NichaA/EstimateCosineFunction/raw/master/image/A1-1_blandaltman.png)
 
 #### EstimateCosine_RandomizedSearchCV.py
@@ -45,10 +51,11 @@ options:    N - number of available data points in the training set (default = 1
 - Randomized search results
 Best: -0.001759 using {'reg_lambda': 0.001, 'neurons': 16, 'hidden_layers': 4, 'epochs': 100, 'batch_size': 400}
 - Test MSE = 0.00014, Test RMSE = 0.011832
-- Bland-Altman plot shows mean+/- SD = -0.00785 +/- 0.00874, 
-    97.5% of the residuals are between -0.02947 and 0.00928,    
-    the extreme ends of theta (at -180, and 180 degrees) has improved compared to previous fixed architecture,
-    The distribution of the residuals is narrower here.
+- Bland-Altman plot shows
+     - mean+/- SD = -0.00785 +/- 0.00874 
+     - 97.5% of the residuals are between -0.02947 and 0.00928    
+     - The extreme ends of theta (at -180, and 180 degrees) has improved compared to the fixed architecture
+     - The distribution of the residuals is narrower here.
 ![alt text](https://github.com/NichaA/EstimateCosineFunction/raw/master/image/A1-2_blandaltman.png)
 
 ### 2) Assume that X is a time-series variable and a sequence of X's is available at inference time 
@@ -58,6 +65,7 @@ Best: -0.001759 using {'reg_lambda': 0.001, 'neurons': 16, 'hidden_layers': 4, '
 - Train-val curves
 ![alt text](https://github.com/NichaA/EstimateCosineFunction/raw/master/image/A2-1_trainval.png)
 - Test MSE = 0.00027, Test RMSE = 0.01654
-- Bland-Altman plot shows mean +/- SD = -0.00033 +/- 0.01654, 
-    97.5% of the residuals are between -0.03274 and 0.03208, 
+- Bland-Altman plot shows 
+            - mean +/- SD = -0.00033 +/- 0.01654
+            - 97.5% of the residuals are between -0.03274 and 0.03208 
 ![alt text](https://github.com/NichaA/EstimateCosineFunction/raw/master/image/A2-1_blandaltman.png)
